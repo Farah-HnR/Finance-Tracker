@@ -15,6 +15,7 @@ class Category(Base):
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     type: Mapped[CategoryType] = mapped_column(SAEnum(CategoryType), nullable=False)
     icon: Mapped[str] = mapped_column(String(50), nullable=True)
+    colour: Mapped[str] = mapped_column(String(7), nullable=False, default="#ffffff")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     user = relationship("User", back_populates="categories")
