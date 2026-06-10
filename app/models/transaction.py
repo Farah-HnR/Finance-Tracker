@@ -19,6 +19,7 @@ class Transaction(Base):
     description: Mapped[str] = mapped_column(Text, nullable=True)
     date: Mapped[date] = mapped_column(Date, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    deleted_at: Mapped[datetime] = mapped_column(DateTime, nullable=True, default=None)
 
     account = relationship("Account", back_populates="transactions")
     category = relationship("Category", back_populates="transactions")

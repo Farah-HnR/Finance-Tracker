@@ -1,5 +1,5 @@
 import uuid
-from datetime import date
+from datetime import date as DateType
 from pydantic import BaseModel, field_validator
 from app.models.enums import TransactionType
 
@@ -9,7 +9,7 @@ class TransactionCreate(BaseModel):
     category_id: uuid.UUID
     amount: float
     type: TransactionType
-    date: date
+    date: DateType
     description: str | None = None
 
     @field_validator("amount")
@@ -26,7 +26,16 @@ class TransactionResponse(BaseModel):
     category_id: uuid.UUID | None
     amount: float
     type: TransactionType
-    date: date
+    date: DateType
     description: str | None
 
     model_config = {"from_attributes": True}
+
+
+
+class PaginatedTransactions(BaseModel):
+    items: list[TransactionResponse]
+    total: int
+    page: int
+    page_size: int
+    total_pages: int
