@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     DATABASE_URL: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     ALGORITHM: str = "HS256"
+    BACKEND_URL: str = "http://127.0.0.1:8000"
 
     class Config:
         env_file = ".env"

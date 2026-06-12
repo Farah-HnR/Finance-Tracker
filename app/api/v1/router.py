@@ -1,8 +1,9 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints import auth, categories, transactions, budgets, reports
+from app.api.v1.endpoints import auth, accounts, categories, transactions, budgets, reports
 
 router = APIRouter(prefix="/api/v1")
 router.include_router(auth.router)
+router.include_router(accounts.router)
 router.include_router(categories.router)
 router.include_router(transactions.router)
 router.include_router(budgets.router)
